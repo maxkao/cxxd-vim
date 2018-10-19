@@ -132,9 +132,12 @@ endfunction
 " Function:     cxxd#services#source_code_model#indexer#fetch_all_diagnostics()
 " Description:  Fetches all of the source code issues/diagnostics.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! cxxd#services#source_code_model#indexer#fetch_all_diagnostics()
+function! cxxd#services#source_code_model#indexer#fetch_all_diagnostics(fetch_sorting_strategy)
     if g:cxxd_src_code_model['services']['indexer']['enabled']
-        python cxxd.api.source_code_model_indexer_fetch_all_diagnostics_request(server_handle)
+        python cxxd.api.source_code_model_indexer_fetch_all_diagnostics_request(
+\           server_handle,
+\           vim.eval("a:fetch_sorting_strategy")
+\       )
     endif
 endfunction
 

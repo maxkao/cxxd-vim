@@ -30,6 +30,21 @@ set cpo&vim
 
 
 "
+" Cxxd fetch-all-diagnostics sorting strategies
+"   Reported diagnostics may be sorted with different strategies:
+"       (1) No sorting.
+"       (2) By diagnostics severity (ascending order).
+"       (3) By diagnostics severity (descending order).
+"       (4) Alphabetically by filenames.
+"
+let g:cxxd_fetch_all_diagnostics_sorting_strategies = {
+\                                                   'none'          : 0,
+\                                                   'severity_asc'  : 1,
+\                                                   'severity_desc' : 2,
+\                                                   'filename'      : 3,
+\}
+
+"
 " Cxxd services definition
 "
 let g:cxxd_src_code_model       = {
