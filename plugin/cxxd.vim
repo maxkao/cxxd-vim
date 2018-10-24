@@ -180,6 +180,8 @@ nmap <unique>       <S-F12>    :vsp <CR>:CxxdGoToDefinition<CR>                 
 imap <unique>       <S-F12>    <ESC>:vsp <CR>:CxxdGoToDefinition<CR>i
 nmap <unique>       <C-\>s     :CxxdFindAllReferences<CR>                       | " Find all references of symbol under the cursor
 imap <unique>       <C-\>s     <ESC>:CxxdFindAllReferences<CR>i
+nmap <unique>       <C-\>d     :CxxdFetchAllDiagnosticsBySeverityDesc<CR>       | " Fetch all diagnostics sorted by severity descending
+imap <unique>       <C-\>d     <ESC>:CxxdFetchAllDiagnosticsBySeverityDesc<CR>i
 nmap <unique>       <C-\>r     :CxxdRebuildIndex<CR>                            | " Rebuild symbol database index for current project
 imap <unique>       <C-\>r     <ESC>:CxxdRebuildIndex<CR>i
 nmap <unique>       <F5>       :CxxdAnalyzerClangTidyBuf<CR>                    | " Run clang-tidy over current buffer (do not apply fixes)
