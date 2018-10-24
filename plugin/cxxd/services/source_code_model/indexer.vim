@@ -42,6 +42,7 @@ endfunction
 function! cxxd#services#source_code_model#indexer#run_on_directory_callback(status)
     if a:status == v:true
         echomsg 'Indexing successfully completed.'
+        call cxxd#services#source_code_model#indexer#fetch_all_diagnostics(g:cxxd_fetch_all_diagnostics_sorting_strategies['severity_desc'])
     else
         echohl WarningMsg | echomsg 'Something went wrong with source-code-model (indexer-run-on-directory) service. See Cxxd server log for more details!' | echohl None
     endif
@@ -147,6 +148,11 @@ endfunction
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! cxxd#services#source_code_model#indexer#fetch_all_diagnostics_callback(status, diagnostics)
     if a:status == v:true
+        if len(a:diagnostics)
+            echohl WarningMsg | echomsg 'Some issues during source code indexing were found. For better experience, please inspect those in QuickFix window.' | echohl None
+        else
+            echohl MoreMsg | echomsg 'Kewl. No issues were found with the code.' | echohl None
+        endif
 python << EOF
 import vim
 with open(vim.eval('a:diagnostics'), 'r') as f:
