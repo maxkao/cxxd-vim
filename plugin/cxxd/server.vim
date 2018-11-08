@@ -39,8 +39,8 @@ endfunction
 " Function:     cxxd#server#stop()
 " Description:  Stops cxxd server.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! cxxd#server#stop()
-    python cxxd.api.server_stop(server_handle, False)
+function! cxxd#server#stop(subscribe_for_shutdown_callback)
+    python cxxd.api.server_stop(server_handle, a:subscribe_for_shutdown_callback)
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
