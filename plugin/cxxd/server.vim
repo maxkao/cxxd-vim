@@ -18,7 +18,7 @@ python server_handle = None
 " Function:     cxxd#server#start()
 " Description:  Starts cxxd server.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! cxxd#server#start()
+function! cxxd#server#start(project_root_directory)
 python << EOF
 import os
 import tempfile
@@ -28,9 +28,11 @@ vim_server_name = vim.eval('v:servername')
 server_handle = cxxd.api.server_start(
     server.get_instance,
     vim_server_name,
+    vim.eval('a:project_root_directory'),
     tempfile.gettempdir() + os.sep + vim_server_name + '_server.log'
 )
 EOF
+    call cxxd#server#start_all_services(a:project_root_directory)
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
