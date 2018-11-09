@@ -40,7 +40,7 @@ endfunction
 " Description:  Stops cxxd server.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! cxxd#server#stop(subscribe_for_shutdown_callback)
-    python cxxd.api.server_stop(server_handle, a:subscribe_for_shutdown_callback)
+    python cxxd.api.server_stop(server_handle, vim.eval('a:subscribe_for_shutdown_callback'))
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
