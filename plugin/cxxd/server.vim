@@ -65,10 +65,10 @@ function! cxxd#server#start_all_services(project_root_directory)
 
     echohl MoreMsg | echomsg 'Compilation database detected at: ' . l:compilation_db_path | echohl None
 
-    call cxxd#services#source_code_model#start(a:project_root_directory, l:compilation_db_path)
+    call cxxd#services#source_code_model#start(l:compilation_db_path)
     call cxxd#services#clang_tidy#start(l:compilation_db_path)
     call cxxd#services#clang_format#start(l:clang_format_config_file)
-    call cxxd#services#project_builder#start(a:project_root_directory)
+    call cxxd#services#project_builder#start()
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
