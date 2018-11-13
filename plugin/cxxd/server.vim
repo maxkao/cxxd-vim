@@ -48,7 +48,6 @@ endfunction
 " Description:  Starts all cxxd server services.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! cxxd#server#start_all_services(project_root_directory)
-    let l:clang_format_config_file = a:project_root_directory . '/' . g:cxxd_clang_format['config']   
     let l:compilation_db_path      = cxxd#server#discover_compilation_db(a:project_root_directory)
 
     if l:compilation_db_path == ''
@@ -67,7 +66,7 @@ function! cxxd#server#start_all_services(project_root_directory)
 
     call cxxd#services#source_code_model#start(l:compilation_db_path)
     call cxxd#services#clang_tidy#start(l:compilation_db_path)
-    call cxxd#services#clang_format#start(l:clang_format_config_file)
+    call cxxd#services#clang_format#start()
     call cxxd#services#project_builder#start()
 endfunction
 
