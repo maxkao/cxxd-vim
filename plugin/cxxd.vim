@@ -146,7 +146,7 @@ augroup END
 "
 " Cxxd commands
 "
-:command -nargs=1 -complete=dir CxxdStart                             :call cxxd#server#start(fnamemodify(<f-args>, ':p'))
+:command -nargs=+ -complete=dir CxxdStart                             :call cxxd#server#start(<f-args>)
 :command                        CxxdStop                              :call cxxd#server#stop(v:false)
 :command                        CxxdGoToInclude                       :call cxxd#services#source_code_model#go_to_include#run(expand('%:p'), line('.'))
 :command                        CxxdGoToDefinition                    :call cxxd#services#source_code_model#go_to_definition#run(expand('%:p'), line('.'), col('.'))

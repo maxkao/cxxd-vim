@@ -18,7 +18,12 @@ python server_handle = None
 " Function:     cxxd#server#start()
 " Description:  Starts cxxd server.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! cxxd#server#start(project_root_directory)
+function! cxxd#server#start(project_root_directory, ...)
+    let l:project_root_directory_full_path =  fnamemodify(a:project_root_directory, ':p')
+    let l:target_configuration = ''         " auto-discovery mode by default
+    if a:0 > 0
+        let l:target_configuration = a:1    " otherwise what user has provided to us
+    endif
 python << EOF
 import os
 import tempfile
@@ -28,7 +33,8 @@ vim_server_name = vim.eval('v:servername')
 server_handle = cxxd.api.server_start(
     server.get_instance,
     vim_server_name,
-    vim.eval('a:project_root_directory'),
+    vim.eval('l:project_root_directory_full_path'),
+    vim.eval('l:target_configuration'),
     tempfile.gettempdir() + os.sep + vim_server_name + '_server.log'
 )
 EOF
