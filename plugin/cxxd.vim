@@ -77,39 +77,12 @@ let g:cxxd_clang_tidy           = {
 \                                   'config'  : '.clang-tidy'
 \}
 
-let g:cxxd_compilation_db_discovery_dir_paths = [
-\                                   '.',
-\                                   'build',
-\                                   'build_cmake',
-\                                   'cmake_build',
-\                                   '../build',
-\                                   '../build_cmake',
-\                                   '../cmake_build'
-\]
-
-let g:cxxd_compilation_db_json  = {
-\                                   'id'          : 1,
-\                                   'name'        : 'compile_commands.json',
-\                                   'description' : 'JSON Compilation DB'
-\}
-
-let g:cxxd_compilation_db_txt   = {
-\                                   'id'          : 2,
-\                                   'name'        : 'compile_flags.txt',
-\                                   'description' : 'Simple txt file containing compiler flags'
-\}
-
 let g:cxxd_available_services   = [
 \                                   g:cxxd_src_code_model,
 \                                   g:cxxd_project_builder,
 \                                   g:cxxd_clang_format,
 \                                   g:cxxd_clang_tidy,
 \]
-
-let g:cxxd_supported_comp_db    = {
-\                                   'json' : g:cxxd_compilation_db_json,
-\                                   'txt'  : g:cxxd_compilation_db_txt,
-\}
 
 
 "
