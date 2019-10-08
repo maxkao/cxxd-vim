@@ -3,7 +3,7 @@
 " Description:  Starts the project builder background service.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! cxxd#services#project_builder#start()
-    python cxxd.api.project_builder_start(server_handle)
+    python3 cxxd.api.project_builder_start(server_handle)
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,7 +23,7 @@ endfunction
 " Description:  Stops the project builder background service.
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! cxxd#services#project_builder#stop(subscribe_for_shutdown_callback)
-    python cxxd.api.project_builder_stop(server_handle, vim.eval('a:subscribe_for_shutdown_callback'))
+    python3 cxxd.api.project_builder_stop(server_handle, vim.eval('a:subscribe_for_shutdown_callback'))
 endfunction
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,7 +54,7 @@ function! cxxd#services#project_builder#run(build_command, ...)
             endwhile
         endif
         call setqflist([])
-        python cxxd.api.project_builder_request(server_handle, vim.eval('a:build_command') + ' ' + vim.eval('l:additional_args'))
+        python3 cxxd.api.project_builder_request(server_handle, vim.eval('a:build_command') + ' ' + vim.eval('l:additional_args'))
     endif
 endfunction
 
